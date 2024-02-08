@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        HOLIS
+    </title>
+ 
+    <script>
+        function validarOperacion(){
+       
+        var Usuario=document.getElementById("ValorUsuario").value; 
+        var password=document.getElementById("valorClave").value;
+        alert("Usuario: "+Usuario+ " Contraseña: "+password)
+        if ((Usuario=="a" || Usuario == "b" || Usuario=="c") && password==123){
+            document.location="https://www.eltiempo.com";
+        }else{
+            alert("No es el usuario, fucha");
+        }
+    }
+ 
+ 
+    </script>
+   
+</head>
+<body>
+   
+    <h1>hola mundito xd</h1>
+    <hr>
+    Usuario
+    <br>
+    <input type="text" id="ValorUsuario">
+    <br>
+    clave
+    <br>
+    <input type="password" id="valorClave">
+    <br>
+    <input type="submit" value="ingresar" onclick="validarOperacion()">
+    <br>
+ 
+ 
+</body>
+ 
+</html>

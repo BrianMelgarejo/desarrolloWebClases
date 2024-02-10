@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almacenamiento</title>
+    <script>
+        var base;
+        console.log("Sistema de productos")
+
+        function iniciar(){
+            base = {
+                "datos":[]
+            };
+            alert("Base iniciada");
+            console.log(base)
+        }
+
+        function guardar(){
+            var vcodigo = document.getElementById("valorCodigo").value;
+            var vnombre = document.getElementById("valorNombre").value;
+            var vprecio = document.getElementById("valorPrecio").value;
+            base.datos.push({
+                codigo: vcodigo,
+                nombre: vnombre,
+                precio: parseInt(vprecio)
+            })
+            //enviar a locar storage
+            localStorage.setItem("ucompensar",JSON.stringify(base))
+            alert("Registro guardado");
+            console.log(base)
+        }
+    </script>
+</head>
+<body>
+    Codigo<br>
+    <input type="text" id="valorCodigo"><br>
+    Nombre<br>
+    <input type="text" id="valorNombre"><br>
+    Precio<br>
+    <input type="text" id="valorPrecio"><br><br>
+    <input type="button" value="Iniciar" onclick="iniciar()">
+    <input type="button" value="Guardar" onclick="guardar()">
+    <input type="button" value="Consultar" onclick="">
+</body>
+</html>

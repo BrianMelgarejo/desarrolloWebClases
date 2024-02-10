@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones</title>
+    <script>
+        function sumar(){
+            var num1 = document.getElementById("valorNum1").value;
+            var num2 = document.getElementById("valorNum2").value;
+            var resultado = parseInt(num1) + parseInt(num2);
+            alert("El resultado es: " + resultado);
+        }
+        function restar(){
+            var num1 = document.getElementById("valorNum1").value;
+            var num2 = document.getElementById("valorNum2").value;
+            var resultado = parseInt(num1) - parseInt(num2);
+            alert("El resultado es: " + resultado);
+        }
+        function multiplicar(){
+            var num1 = document.getElementById("valorNum1").value;
+            var num2 = document.getElementById("valorNum2").value;
+            var resultado = parseInt(num1) * parseInt(num2);
+            alert("El resultado es: " + resultado);
+        }
+        function dividir(){
+            var num1 = document.getElementById("valorNum1").value;
+            var num2 = document.getElementById("valorNum2").value;
+            var resultado = parseInt(num1) / parseInt(num2);
+            alert("El resultado es: " + resultado);
+        }
+    </script>
+</head>
+<body>
+    numero 1
+    <br>
+    <input type="text" id="valorNum1">
+    <br>
+    numero 2
+    <br>
+    <input type="text" id="valorNum2">
+    <br>
+    <br>
+    <input type="button" value="Sumar" onclick="sumar()">
+    <input type="button" value="Restar" onclick="restar()">
+    <br>
+    <br>
+    <input type="button" value="Multiplicar" onclick="multiplicar()">
+    <input type="button" value="Dividir" onclick="dividir()">
+</body>
+</html>

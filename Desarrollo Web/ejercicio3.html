@@ -17,6 +17,7 @@
         }
 
         function guardar(){
+            base = JSON.parse(localStorage.getItem("ucompensar"));
             var vcodigo = document.getElementById("valorCodigo").value;
             var vnombre = document.getElementById("valorNombre").value;
             var vprecio = document.getElementById("valorPrecio").value;
@@ -29,7 +30,31 @@
             localStorage.setItem("ucompensar",JSON.stringify(base))
             alert("Registro guardado");
             console.log(base)
+            document.getElementById("valorCodigo").value = "";
+            document.getElementById("valorNombre").value = "";
+            document.getElementById("valorPrecio").value = "";
         }
+
+        function consultar(){
+            base = JSON.parse(localStorage.getItem("ucompensar"));
+            console.log(base);
+            let table = document.getElementById("tablaDatos");
+            table.innerHTML = "";
+            for (var i = 0; i < base.datos.length; i++) {
+                let row = table.insertRow(-1);
+                let c1 = row.insertCell(0);
+                let c2 = row.insertCell(1);
+                let c3 = row.insertCell(2);
+                c1.innerText = base.datos[i].codigo;
+                c2.innerText = base.datos[i].nombre;
+                c3.innerText = base.datos[i].precio;
+                row.appendChild(c1);
+                row.appendChild(c2);
+                row.appendChild(c3);
+                table.appendChild(row);
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -41,6 +66,9 @@
     <input type="text" id="valorPrecio"><br><br>
     <input type="button" value="Iniciar" onclick="iniciar()">
     <input type="button" value="Guardar" onclick="guardar()">
-    <input type="button" value="Consultar" onclick="">
+    <input type="button" value="Consultar" onclick="consultar()">
+    <br><br>
+    <table border="1" id="tablaDatos">
+    </table>
 </body>
 </html>

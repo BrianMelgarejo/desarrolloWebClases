@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto de emprendimiento xd</title>
+    <script>
+
+        var cY = 0;
+        var cX = 500;
+        var angulo = 0
+
+        function bajar(){
+            document.getElementById("audio").play();
+            cY += 10;
+            angulo += 10;
+            document.getElementById("nave").style.top = cY + "px";
+            document.getElementById("nave").style.transform = "rotate(" + angulo + "deg)";
+            nave = document.getElementById("nave"); 
+        }
+
+        function derecha(){
+            document.getElementById("audio").play();
+            cX += 10;
+            angulo += 10;
+            document.getElementById("nave").style.left = cX + "px";
+            document.getElementById("nave").style.transform = "rotate(" + angulo + "deg)";
+            nave = document.getElementById("nave"); 
+        }
+
+        function izquierda(){
+            document.getElementById("audio").play();
+            cX -= 10;
+            angulo -= 10;
+            document.getElementById("nave").style.left = cX + "px";
+            document.getElementById("nave").style.transform = "rotate(" + angulo + "deg)";
+            nave = document.getElementById("nave"); 
+        }
+
+        function subir(){
+            document.getElementById("audio").play();
+            cY -= 10;
+            angulo -= 10;
+            document.getElementById("nave").style.top = cY + "px";
+            document.getElementById("nave").style.transform = "rotate(" + angulo + "deg)";
+            nave = document.getElementById("nave"); 
+        }
+
+    </script>
+</head>
+<body>
+    <audio id="audio" controls style="display: none;">
+        <source src="img/saltar.mp3">
+    </audio>
+    <div style="position: absolute;
+        top: 0px;
+        left: 400px;
+        border-style: solid;
+        width: 800px;
+        height: 700px;">
+    </div>
+    <img src="img/Nave.png" alt="imagen balon" id="nave" style="position: absolute; top: 0px; left: 500px; width: 120px; height: 120px;">
+    <div id="controles" style="position: absolute; left: 10px; top: 10px;">
+        <button type="button" onclick="subir()" style="position: absolute; left: 50px;">
+            Subir
+        </button>
+        <br>
+        <button type="button" onclick="izquierda()" style="position: absolute; top: 20px;">
+            Izquierda
+        </button>
+        <button type="button" onclick="bajar()" style="position: absolute; top: 20px; left: 70px;">
+            Bajar
+        </button>
+        <button type="button" onclick="derecha()" style="position: absolute; top: 20px; left: 120px;">
+            Derecha
+        </button>
+    </div>
+</body>
+</html>

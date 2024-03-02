@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mail sender</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    function enviarEmail(){
+        const asunto = document.getElementById("valorAsunto").value;
+        const email = document.getElementById("valorEmail").value;
+        const mensaje = document.getElementById("valorMensaje").value;
+        const data = {
+            enviarEmail:1,
+            valorAsunto : asunto,
+            valorMensaje : mensaje,
+            valorEmail : email   
+        };
+        if(asunto != "" && email != "" && mensaje != ""){
+            fetch('https://comunicatte.com.co/so/ajax.php', {
+                    method: 'POST',
+                    headers: {
+                        'dataType': 'json'
+                    },
+                    body: JSON.stringify({
+                        enviarEmail:1,
+                        valorAsunto:asunto,
+                        valorMensaje:mensaje,
+                        valorEmail:email   
+                    })
+                })
+                .then(response => response.json())
+                .then(data => alert("Correo enviado..."))
+                .catch(error => console.log('Error:', error));
+                /*$.ajax({
+                    url: 'https://comunicatte.com.co/so/ajax.php',
+                    type: 'post',
+                    data: {enviarEmail:1,valorAsunto:asunto,valorMensaje:mensaje,valorDestino:email },
+                    dataType: 'json',
+                    success:function(response)
+                    {
+                    console.log("La respuesta es..."+response);
+                    alert("Email enviado...");
+                    }
+        });*/
+        }
+        else{
+            alert("Por favor rellene los campos");
+        }
+    }
+</script>
+<body>
+    <h1>ENVIO EMAIL</h1>
+    <hr>
+    *Asunto <br>
+    <input type="text" id="valorAsunto"> <br>
+    *Email destino <br>
+    <input type="email" id="valorEmail"> <br>
+    *Mensaje <br>
+    <textarea rows="6" id="valorMensaje"></textarea> <br>
+    <button type="button" onclick="enviarEmail()">Enviar</button>
+</body>
+</html>

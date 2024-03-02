@@ -1,43 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>
-        HOLIS
-    </title>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        function validarOperacion(){
-       
-        var Usuario=document.getElementById("ValorUsuario").value; 
-        var password=document.getElementById("valorClave").value;
-        alert("Usuario: "+Usuario+ " Contraseña: "+password)
-        if ((Usuario=="a" || Usuario == "b" || Usuario=="c") && password==123){
-            document.location="https://www.eltiempo.com";
-        }else{
-            alert("No es el usuario, fucha");
+        function enviar(){
+            var nombre = document.getElementById("valorNombre").value;
+            var fecha = document.getElementById("valorFecha").value;
+            var comentario = document.getElementById("valorComentario").value;
+            if(nombre == "" || fecha == "" || comentario == ""){
+                alert("Por favor ingrese rellene los campos")
+            }
+            else{
+                $.ajax({
+                        url: 'https://comunicatte.com.co/so/ajax.php',
+                        type: 'post',
+                        data: {almacenar:1, valorNombreCompleto:nombre,valorFecha:fecha,valorComentario:comentario },
+                        dataType: 'json',
+                        success:function(response)
+                        {
+                            console.log("La respuesta es..."+response);
+                            alert("Proceso realizado...");
+                        }
+                    });
+            }
         }
-    }
+        function enviarSMS(){
+            var celular = document.getElementById('valorCelular').value;  
+            var mensaje = document.getElementById('valorMensaje').value;
  
- 
+            $.ajax({
+                    url: 'https://comunicatte.com.co/so/ajax.php',
+                    type: 'post',
+                    data: {  enviarSMS:1,valorTelefono:celular,valorMensajeSMS:mensaje },
+                    dataType: 'json',
+                    success:function(response)
+                    {
+                    console.log("La respuesta es..."+response);
+                    alert("SMS enviado...");
+                    }
+            });
+        
+        }
     </script>
-   
 </head>
 <body>
-   
-    <h1>hola mundito xd</h1>
+    
+    <h1>
+        Contactanos
+    </h1>
     <hr>
-    Usuario
-    <br>
-    <input type="text" id="ValorUsuario">
-    <br>
-    clave
-    <br>
-    <input type="password" id="valorClave">
-    <br>
-    <input type="submit" value="ingresar" onclick="validarOperacion()">
-    <br>
- 
- 
+    *Nombre <br>
+    <input type="text" id="valorNombre"> <br><br>
+    *Fecha(yyyy/MM/dd) <br>
+    <input type="text" id="valorFecha"> <br><br>
+    *Comentario <br>
+    <textarea name="Area-comentario" id="valorComentario" cols="30" rows="10"></textarea> <br>
+    <button type="button" value="Enviar" onclick="enviar()">Enviar Comentario</button>
+
+    <hr>
+    <h1>
+        SMS
+    </h1>
+    <hr>
+    *Celular <br>
+    <input type="text" id="valorCelular"> <br>
+    *Mensaje <br>
+    <textarea id="valorMensaje" rows="4"></textarea> <br>
+    <input type="button" value="Enviar Mensaje" onclick="enviarSMS()">
 </body>
- 
 </html>
